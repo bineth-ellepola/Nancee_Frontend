@@ -24,6 +24,11 @@ useEffect(() =>{
       <Link key={p._id} to={`/Details/${p._id}`} className="product-card">
         <h3>{p.name}</h3>
         <p>{p.brand}</p>
+        <p>{p.description}</p>
+        <p>{p.category}</p>
+        <p>{p.stocks}</p>
+        <p>{p.createdAT}</p>
+       
         <p>LKR {p.priceLKR}</p>
       </Link>
     ))}

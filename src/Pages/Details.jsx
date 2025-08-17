@@ -43,6 +43,10 @@ useEffect(() => {
           <p>{product.brand || "No brand"}</p>
           <p>LKR {product.priceLKR ?? "N/A"}</p>
           <p>{product.description || "No description"}</p>
+           
+        <p>{product.category}</p>
+        <p>{product.stocks}</p>
+        <p>{product.createdAT}</p>
           
         </div>
       </div>
