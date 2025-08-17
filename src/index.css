@@ -1,0 +1,13 @@
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+ html{
+    scroll-behavior: smooth;
+    user-select: none;
+    -webkit-user-select: none;
+ }
+ body{
+    background-color: rgb(239, 238, 238);
+ }

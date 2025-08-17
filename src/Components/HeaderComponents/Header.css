@@ -1,0 +1,209 @@
+ @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Sinhala:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Noto+Sans+Georgian:wght@100..900&family=Noto+Sans+Sinhala:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+ 
+.main-nav{
+    width: 100%;
+    height: 39px;
+    
+    padding: 7px 3%;
+    position: relative;z-index: 9999;
+     
+ }
+ .nav-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     
+ }
+ .nav-logo{
+    display: flex;
+    flex-direction: column;
+    
+ }
+ .nav-logo h3{
+    color: rgb(30, 30, 30);
+    font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 1.4px;
+  font-size: 24px;
+ }
+ .nav-logo p{
+    font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+ }
+ .log{
+    color: rgb(255, 81, 0);
+ }
+ .links{
+    display: flex;
+     align-items: center;
+     position: absolute;
+     left: 50%;
+  transform: translateX(-50%);
+   
+ }
+  
+  .main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+    align-items: center;
+    text-align: center;
+  }
+  .main .m{
+    color: black;
+    font-size: 17px;
+    font-weight: 400;
+    
+  }
+   .main p{
+    color: gray;
+   }
+ 
+ 
+.icons{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+
+}
+.ic{
+  font-size: 20px;
+  cursor: pointer;
+    color: #333;
+
+}
+.cart{
+  position: relative;
+}
+.count{
+  position: absolute;
+  top: -50%;
+  left: 70%;
+  color: rgb(255, 0, 0);
+}
+ 
+ 
+.op {
+  font-size: 60px;
+}
+
+.Link {
+  color: rgb(57, 57, 57);
+  text-decoration: none;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+   transition: transform 0.3s ease-in-out;
+   
+}
+.Link:hover{
+   color: rgb(255, 81, 0);
+}
+  .d{
+    
+    overflow: hidden;
+ }
+ .d .d-btn{
+     
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+ }
+  
+ .navbar .Link:hover, .d:hover .d-btn{
+    color: rgb(255, 81, 0);
+ }
+ .d-content {
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    z-index: 9000;
+    left: 0;
+    top: 8%;
+    margin-top: 20px;
+    padding: 3% 3%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;  /* ensure positioned for transform */
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.d:hover .d-content {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+ .colu{
+     
+    
+    padding: 10px;
+    background-color: rgb(254, 254, 254);
+     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+ }
+  
+ 
+ .row{
+   display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 columns, equal width */
+  gap: 40px; 
+  align-items: center;
+   
+  text-align: center;
+ }
+ 
+ .row:after{
+    content: "";
+    display: table;
+    clear: both;
+ }
+
+  .center{
+    position: absolute;
+     left: 50%;
+  transform: translateX(-50%);
+ 
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+    .center .Link{
+      margin: 0 10px;
+    }
+    .img{
+      width: 50px;
+      background-repeat: no-repeat;
+      object-fit: cover;
+    }
+    .title{
+      font-size: 15px;
+       font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(41, 62, 165);
+    }
+     .navbar .Link:hover, .d:hover .icom {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+.loglink{
+   text-decoration: none;
+   color: rgb(31, 31, 31);
+}
