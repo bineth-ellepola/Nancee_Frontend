@@ -24,7 +24,7 @@ export default function Header() {
         <div className="nav-content">
 
             <div className="nav-logo">
-               <Link  to="/"  className="loglink"> <h3> <span className='log'>N</span>ancee </h3> <p>medicine partners</p></Link>  
+               <Link  to="/"  className="loglink"> <h3> <span className='log'>N</span>ancee </h3> <p>medicine partner</p></Link>  
                 
             </div>
 
