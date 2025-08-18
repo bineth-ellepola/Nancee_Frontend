@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
-import p2 from "../../assets/p2.jpg";
-import p3 from "../../assets/p8.jpg";
-import p4 from "../../assets/p1.jpg";
-import p44 from '../../assets/arr.png'
  
-import p46 from '../../assets/o2.jpg'
+ 
+ 
+const p1 = "https://res.cloudinary.com/dau59mvx0/image/upload/p2_ticvbk.jpg";
+const p2 = " https://res.cloudinary.com/dau59mvx0/image/upload/p8_welxok.jpg"
+const p3 = "https://res.cloudinary.com/dau59mvx0/image/upload/k1_eekkob.jpg"
+const p4 = "https://res.cloudinary.com/dau59mvx0/image/upload/o2_mvggsp.jpg"
+const arro = "https://res.cloudinary.com/dau59mvx0/image/upload/arr_qk0tbl.png"
+  
 import { IoIosArrowRoundForward } from "react-icons/io";
 import '../BodySection/Body.css'
 import { Link } from "react-router-dom";
 function Home() {
   const slides = [
     {
-      img: p2,
+      img: p1,
       semiTitle: "New Arrivals",
       mainTitle: "Fill your desk full of medicines and happiness.",
       priceText: "Starts from",
@@ -19,7 +22,7 @@ function Home() {
       btnText: "Shop now"
     },
     {
-      img: p3,
+      img: p2,
       semiTitle: "Special Offer",
       mainTitle: "Keep your family healthy with our best medicines.",
       priceText: "Starts from",
@@ -27,7 +30,7 @@ function Home() {
       btnText: "Buy now"
     },
     {
-      img: p4,
+      img: p3,
       semiTitle: "Best Sellers",
       mainTitle: "The most trusted products for your daily needs.",
       priceText: "Starts from",
@@ -35,7 +38,7 @@ function Home() {
       btnText: "Order now"
     },
      {
-      img: p46,
+      img: p4,
       semiTitle: "Latest Products",
       mainTitle: "Secured ayurvedic products from us.",
       priceText: "Starts from",
@@ -67,7 +70,7 @@ function Home() {
 
         {/* CARD 1 - SLIDER */}
         <div
-          className={`card card1 ${fade ? "fade-in" : "fade-out"}`}
+          className={`  card1 ${fade ? "fade-in" : "fade-out"}`}
           style={{
             backgroundImage: `url(${slides[currentIndex].img})`
           }}
@@ -88,9 +91,9 @@ function Home() {
         </div>
 
         {/* CARD 2 */}
-        <div className="card card2">
+        <div className="  card2">
            <div className="arrow">
-          <img src={p44} className="iop"></img>
+          <img src={arro} className="iop"></img>
            </div>
           <div className="main-title">
             <h1><span className="sp"> 40% </span>off for Ayurvedic Wellness.</h1>
@@ -102,7 +105,7 @@ function Home() {
         </div>
 
         {/* CARD 3 */}
-        <div className="card card3">
+        <div className="  card3">
           <div className="semi-title">
             <p>Trusted delivering in SriLanka</p>
             <p className="number">500+</p>

@@ -2,6 +2,7 @@
 import Header from '../Components/HeaderComponents/Header'
 import Body from '../Components/BodySection/Body'
 import { Link } from 'react-router-dom'
+import Product from '../Components/ProductSection/Product'
 
 function Home()
  {
@@ -9,6 +10,7 @@ function Home()
     <div>
         <Header />
          <Body />      
+         <Product />
          <Link to="/Upload">Upload</Link>
     </div>
   )

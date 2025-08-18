@@ -109,7 +109,7 @@ left: 5%;
     transform: translateY(-2px);  }
 
     .card2{
-        background-image: url(../../assets/x5.jpg);
+        background-image: url(https://res.cloudinary.com/dau59mvx0/image/upload/x5_sed0jj.jpg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -140,7 +140,7 @@ left: 5%;
 
     
     .card3{
-        background-image: url(../../assets/plane.jpg);
+        background-image: url(https://res.cloudinary.com/dau59mvx0/image/upload/plane_b78vgl.jpg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;

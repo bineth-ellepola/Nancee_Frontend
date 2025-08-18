@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom/client';
 import Products from './Pages/Products.jsx'
 import Details from '../src/Pages/Details.jsx'
 import Upload from './Pages/Upload.jsx';
+import Innovations from './Pages/Innovations.jsx';
 
 const router = createBrowserRouter([
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     {
     path:"/Upload",
     element: <Upload />,
+  },
+   {
+    path:"/Innovations",
+    element: <Innovations />,
   },
    
 ]);
