@@ -9,7 +9,7 @@ export default function Product() {
     axios
       .get("http://localhost:5001/products")
       .then((res) => {
-        console.log(res.data.products); // check structure
+        console.log(res.data.products);  
         setProducts(res.data.products);
       })
       .catch((err) => console.error(err));
@@ -19,7 +19,8 @@ export default function Product() {
     <div className="main">
       {products.map((p) => (
         <div key={p._id} className="card">
-          {/* Image Rendering */}
+          
+  
           {p.images && p.images.length > 0 ? (
             p.images.length > 1 ? (
               <div className="slider">
@@ -59,7 +60,11 @@ export default function Product() {
           </div>
 
           <div className="pricing-stock">
-            <span className="price">LKR {p.priceLKR}</span>
+            <div className="prices">
+              <span className="price">LKR {p.priceLKR }</span>
+            <span className="oldPrice">LKR {p.priceLKR + 300}</span>
+            </div>
+            
             <span className={p.stock > 0 ? "instock" : "outstock"}>
               {p.stock > 0 ? `In Stock (${p.stock})` : "Out of Stock"}
             </span>
