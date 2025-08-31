@@ -7,7 +7,7 @@ export default function Product() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/products")
+      .get("http://localhost:5000/products")
       .then((res) => {
         console.log(res.data.products);  
         setProducts(res.data.products);

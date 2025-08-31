@@ -35,7 +35,7 @@ export default function Upload() {
     });
 
     try {
-      await axios.post("http://localhost:5001/products/add", data);
+      await axios.post("http://localhost:5000/products/add", data);
       alert("Product uploaded successfully!");
       setFormData({
         name: "",
