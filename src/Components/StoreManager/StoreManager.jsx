@@ -5,7 +5,7 @@ import './StoreManager.css';
 
 function StoreManager() {
   const [products, setProducts] = useState([]);
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState("home"); // "home", "upload", "inventory", "returns"
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -14,7 +14,7 @@ function StoreManager() {
     priceLKR: "",
     stock: "",
     images: [],
-    _id: null, // for update
+    _id: null,
   });
 
   // Fetch products
@@ -31,7 +31,6 @@ function StoreManager() {
     fetchProducts();
   }, []);
 
-  // Handle form changes
   const handleChange = (e) => {
     if (e.target.name === "images") {
       setFormData({ ...formData, images: e.target.files });
@@ -40,11 +39,9 @@ function StoreManager() {
     }
   };
 
-  // Submit form (Add or Update)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-
     Object.keys(formData).forEach((key) => {
       if (key === "images") {
         for (let i = 0; i < formData.images.length; i++) {
@@ -57,15 +54,12 @@ function StoreManager() {
 
     try {
       if (formData._id) {
-        // Update product
         await axios.put(`http://localhost:5000/products/update/${formData._id}`, data);
         alert("Product updated successfully!");
       } else {
-        // Add new product
         await axios.post("http://localhost:5000/products/add", data);
         alert("Product added successfully!");
       }
-
       setFormData({
         name: "",
         description: "",
@@ -76,7 +70,6 @@ function StoreManager() {
         images: [],
         _id: null,
       });
-
       setActiveTab("inventory");
       fetchProducts();
     } catch (err) {
@@ -85,7 +78,6 @@ function StoreManager() {
     }
   };
 
-  // Delete product
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
@@ -98,7 +90,6 @@ function StoreManager() {
     }
   };
 
-  // Load product data into form for update
   const handleUpdate = (product) => {
     setFormData({
       name: product.name,
@@ -107,7 +98,7 @@ function StoreManager() {
       category: product.category,
       priceLKR: product.priceLKR,
       stock: product.stock,
-      images: [], // images can be re-uploaded
+      images: [],
       _id: product._id,
     });
     setActiveTab("upload");
@@ -128,6 +119,9 @@ function StoreManager() {
           <li>
             <button className="sidebar-btn" onClick={() => setActiveTab("inventory")}>Item Lists</button>
           </li>
+          <li>
+            <button className="sidebar-btn" onClick={() => setActiveTab("returns")}>Returns</button>
+          </li>
         </ul>
       </div>
 
@@ -137,7 +131,7 @@ function StoreManager() {
         {activeTab === "home" && (
           <div>
             <h2>Welcome to the Store Manager Dashboard</h2>
-            <p>Use the sidebar to navigate between Home, Add Item, and Item Lists.</p>
+            <p>Use the sidebar to navigate between Home, Add Item, Item Lists, and Returns.</p>
             <Link to="/" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Go to Home Page
             </Link>
@@ -186,11 +180,7 @@ function StoreManager() {
                     <tr key={p._id}>
                       <td>
                         {p.images && p.images.length > 0 ? (
-                          <img
-                            src={typeof p.images[0] === "string" ? p.images[0] : p.images[0].url}
-                            alt={p.name}
-                            className="thumbnail"
-                          />
+                          <img src={typeof p.images[0] === "string" ? p.images[0] : p.images[0].url} alt={p.name} className="thumbnail"/>
                         ) : "No Image"}
                       </td>
                       <td>{p.name}</td>
@@ -198,9 +188,7 @@ function StoreManager() {
                       <td>{p.brand}</td>
                       <td>{p.category}</td>
                       <td>{p.priceLKR}</td>
-                      <td className={p.stock > 0 ? "instock" : "outstock"}>
-                        {p.stock > 0 ? p.stock : "Out of Stock"}
-                      </td>
+                      <td className={p.stock > 0 ? "instock" : "outstock"}>{p.stock > 0 ? p.stock : "Out of Stock"}</td>
                       <td>
                         <button className="action-btn update-btn" onClick={() => handleUpdate(p)}>Update</button>
                         <button className="action-btn delete-btn" onClick={() => handleDelete(p._id)}>Delete</button>
@@ -211,6 +199,15 @@ function StoreManager() {
               </table>
             )}
           </>
+        )}
+
+        {/* Returns Tab */}
+        {activeTab === "returns" && (
+          <div>
+            <h2>Returns</h2>
+            <p>Here you can manage returned products.</p>
+            {/* You can add a table of returned products here */}
+          </div>
         )}
       </div>
     </div>
