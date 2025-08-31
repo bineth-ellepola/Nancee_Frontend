@@ -7,7 +7,7 @@ import Products from './Pages/Products.jsx'
 import Details from '../src/Pages/Details.jsx'
 import Upload from './Pages/Upload.jsx';
 import Innovations from './Pages/Innovations.jsx';
-
+import StoreManagerView from './Pages/StoreManagerView.jsx';
 const router = createBrowserRouter([
 
   {
@@ -30,7 +30,14 @@ const router = createBrowserRouter([
     path:"/Innovations",
     element: <Innovations />,
   },
-   
+
+
+   {
+    path:"/StoreManagerView",
+    element: <StoreManagerView />,
+  },
+
+
 ]);
 
 

@@ -1,0 +1,66 @@
+/* Upload.css */
+
+/* Container form styling */
+.upload-form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form title */
+.upload-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e3a8a; /* blue color */
+  font-size: 24px;
+}
+
+/* Input fields */
+.upload-form input[type="text"],
+.upload-form input[type="number"],
+.upload-form input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+/* Input focus effect */
+.upload-form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+  outline: none;
+}
+
+/* Submit button */
+.upload-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for button */
+.upload-form button:hover {
+  background-color: #1e40af;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .upload-form {
+    margin: 20px;
+    padding: 20px;
+  }
+}

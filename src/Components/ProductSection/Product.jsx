@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Import Link
 import axios from "axios";
 import "../ProductSection/Product.css";
 
@@ -17,10 +18,13 @@ export default function Product() {
 
   return (
     <div className="main">
+      {/* Upload Link at the top */}
+      <div className="upload-link">
+        <Link to="/Upload">Upload</Link>
+      </div>
+
       {products.map((p) => (
         <div key={p._id} className="card">
-          
-  
           {p.images && p.images.length > 0 ? (
             p.images.length > 1 ? (
               <div className="slider">
@@ -50,7 +54,6 @@ export default function Product() {
             <div className="no-image">No Image Available</div>
           )}
 
-          {/* Product Details */}
           <h3>{p.name}</h3>
           <p>{p.description}</p>
 
@@ -61,10 +64,9 @@ export default function Product() {
 
           <div className="pricing-stock">
             <div className="prices">
-              <span className="price">LKR {p.priceLKR }</span>
-            <span className="oldPrice">LKR {p.priceLKR + 300}</span>
+              <span className="price">LKR {p.priceLKR}</span>
+              <span className="oldPrice">LKR {p.priceLKR + 300}</span>
             </div>
-            
             <span className={p.stock > 0 ? "instock" : "outstock"}>
               {p.stock > 0 ? `In Stock (${p.stock})` : "Out of Stock"}
             </span>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import './Upload.css';
+
 
 export default function Upload() {
   const [formData, setFormData] = useState({
@@ -53,7 +55,7 @@ export default function Upload() {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data" className="p-4 border rounded shadow-md max-w-md mx-auto">
+    <form onSubmit={handleSubmit} encType="multipart/form-data" className="upload-form">
       <h2 className="text-xl font-bold mb-4">Add Product</h2>
       <input type="text" name="name" placeholder="Name" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
       <input type="text" name="description" placeholder="Description" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>

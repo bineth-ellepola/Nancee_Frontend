@@ -8,7 +8,7 @@ import Header from '../Components/HeaderComponents/Header'
      <>
       <Header />
       <Product />
-       
+      
      </>
    )
  }
