@@ -18,7 +18,7 @@ export default function Product() {
 
   return (
     <div className="main">
-      {/* Upload Link at the top */}
+      
       <div className="upload-link">
         <Link to="/Upload">Upload</Link>
       </div>
