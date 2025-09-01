@@ -307,3 +307,100 @@ input[type="file"] {
   color: #fff;
   text-align: center;
 }
+/* Orders Container */
+.orders-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 20px;
+}
+
+.orders-container h2 {
+  margin-bottom: 16px;
+  color: #2c3e50;
+  font-size: 24px;
+}
+
+/* Orders Table */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.orders-table th {
+  background-color: #f4f6f8;
+  color: #34495e;
+}
+
+.orders-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Product List inside Orders */
+.orders-table td div {
+  margin-bottom: 4px;
+}
+
+/* Process Button */
+.action-btn.update-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 14px;
+}
+
+.action-btn.update-btn:hover {
+  background-color: #219150;
+}
+
+/* Delete Button (if needed in orders) */
+.action-btn.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 14px;
+}
+
+.action-btn.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive Table */
+@media screen and (max-width: 1024px) {
+  .orders-table th, 
+  .orders-table td {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+}
+
+/* Optional: highlight processed orders */
+.orders-table td {
+  transition: background 0.3s ease;
+}
+
+.orders-table tr td:nth-child(5) { /* Status column */
+  font-weight: bold;
+}
+
+.orders-table tr td:nth-child(5):contains("Processed") {
+  color: #27ae60;
+}

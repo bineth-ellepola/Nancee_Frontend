@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import "./Upload.css";
+import './Upload.css';
+
 
 export default function Upload() {
   const [formData, setFormData] = useState({
@@ -13,19 +14,9 @@ export default function Upload() {
     images: [],
   });
 
-  const [previewImages, setPreviewImages] = useState([]);
-
   const handleChange = (e) => {
     if (e.target.name === "images") {
-      const files = Array.from(e.target.files);
-      setFormData({
-        ...formData,
-        images: files,
-      });
-
-      // preview selected images
-      const previews = files.map((file) => URL.createObjectURL(file));
-      setPreviewImages(previews);
+      setFormData({ ...formData, images: e.target.files });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -33,24 +24,21 @@ export default function Upload() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const data = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      if (key === "images") {
+        for (let i = 0; i < formData.images.length; i++) {
+          data.append("images", formData.images[i]);
+        }
+      } else {
+        data.append(key, formData[key]);
+      }
+    });
 
     try {
-      const formDataToSend = new FormData();
-      for (let key in formData) {
-        if (key === "images") {
-          formData.images.forEach((img) => formDataToSend.append("images", img));
-        } else {
-          formDataToSend.append(key, formData[key]);
-        }
-      }
-
-      await axios.post("http://localhost:5000/products", formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      alert("✅ Product added successfully!");
-
-      // reset form
+      await axios.post("http://localhost:5000/products/add", data);
+      alert("Product uploaded successfully!");
       setFormData({
         name: "",
         description: "",
@@ -60,106 +48,23 @@ export default function Upload() {
         stock: "",
         images: [],
       });
-      setPreviewImages([]);
-    } catch (error) {
-      console.error(error);
-      alert("❌ Failed to add product");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to upload product.");
     }
   };
 
   return (
-    <div className="upload-container">
-      <div className="upload-card">
-        <h2>Add New Product</h2>
-        <form onSubmit={handleSubmit} className="upload-form">
-          <label>Product Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter product name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Description</label>
-          <textarea
-            name="description"
-            placeholder="Enter product description"
-            value={formData.description}
-            onChange={handleChange}
-            rows="3"
-            required
-          />
-
-          <label>Brand</label>
-          <input
-            type="text"
-            name="brand"
-            placeholder="Enter brand"
-            value={formData.brand}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Category</label>
-          <input
-            type="text"
-            name="category"
-            placeholder="Enter category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          />
-
-          <div className="form-row">
-            <div>
-              <label>Price (LKR)</label>
-              <input
-                type="number"
-                name="priceLKR"
-                placeholder="e.g. 2500"
-                value={formData.priceLKR}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label>Stock</label>
-              <input
-                type="number"
-                name="stock"
-                placeholder="e.g. 50"
-                value={formData.stock}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          <label>Upload Images</label>
-          <input
-            type="file"
-            name="images"
-            multiple
-            accept="image/*"
-            onChange={handleChange}
-          />
-
-          {/* preview images */}
-          {previewImages.length > 0 && (
-            <div className="image-preview">
-              {previewImages.map((src, index) => (
-                <img key={index} src={src} alt="preview" />
-              ))}
-            </div>
-          )}
-
-          <button type="submit" className="submit-btn">
-            ➕ Add Product
-          </button>
-        </form>
-      </div>
-    </div>
+    <form onSubmit={handleSubmit} encType="multipart/form-data" className="upload-form">
+      <h2 className="text-xl font-bold mb-4">Add Product</h2>
+      <input type="text" name="name" placeholder="Name" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
+      <input type="text" name="description" placeholder="Description" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
+      <input type="text" name="brand" placeholder="Brand" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
+      <input type="text" name="category" placeholder="Category" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
+      <input type="number" name="priceLKR" placeholder="Price LKR" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
+      <input type="number" name="stock" placeholder="Stock" onChange={handleChange} required className="mb-2 w-full p-2 border rounded"/>
+      <input type="file" name="images" multiple accept="image/*" onChange={handleChange} required className="mb-4 w-full"/>
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Product</button>
+    </form>
   );
 }
