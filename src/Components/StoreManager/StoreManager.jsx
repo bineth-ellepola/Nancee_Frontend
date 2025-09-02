@@ -121,7 +121,10 @@ function StoreManager() {
 
     try {
       if (formData._id) {
-        await axios.put(`http://localhost:5000/products/update/${formData._id}`, data);
+        await axios.put(
+          `http://localhost:5000/products/update/${formData._id}`,
+          data
+        );
         alert("✅ Product updated successfully!");
       } else {
         await axios.post("http://localhost:5000/products/add", data);
@@ -147,7 +150,8 @@ function StoreManager() {
 
   // Delete product
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this product?")) return;
+    if (!window.confirm("Are you sure you want to delete this product?"))
+      return;
     try {
       await axios.delete(`http://localhost:5000/products/delete/${id}`);
       alert("🗑️ Product deleted successfully!");
@@ -194,7 +198,11 @@ function StoreManager() {
       {/* Sidebar */}
       <div className="sidebar">
         <div className="profile-section">
-          <img src="/profile_pic.jpeg" alt="User Profile" className="profile-pic" />
+          <img
+            src="/profile_pic.jpeg"
+            alt="User Profile"
+            className="profile-pic"
+          />
           <h3 className="profile-name">Bineth</h3>
         </div>
 
@@ -210,7 +218,9 @@ function StoreManager() {
           </li>
           <li>
             <button
-              className={`sidebar-btn ${activeTab === "upload" ? "active" : ""}`}
+              className={`sidebar-btn ${
+                activeTab === "upload" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("upload")}
             >
               ➕ Add Item
@@ -218,7 +228,9 @@ function StoreManager() {
           </li>
           <li>
             <button
-              className={`sidebar-btn ${activeTab === "inventory" ? "active" : ""}`}
+              className={`sidebar-btn ${
+                activeTab === "inventory" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("inventory")}
             >
               📦 Inventory
@@ -226,7 +238,9 @@ function StoreManager() {
           </li>
           <li>
             <button
-              className={`sidebar-btn ${activeTab === "returns" ? "active" : ""}`}
+              className={`sidebar-btn ${
+                activeTab === "returns" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("returns")}
             >
               ↩️ Returns
@@ -234,7 +248,9 @@ function StoreManager() {
           </li>
           <li>
             <button
-              className={`sidebar-btn ${activeTab === "orders" ? "active" : ""}`}
+              className={`sidebar-btn ${
+                activeTab === "orders" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("orders")}
             >
               📝 Orders
@@ -251,19 +267,31 @@ function StoreManager() {
             <h2>Welcome back, Bineth 👋</h2>
             <p>Manage your store efficiently with quick shortcuts below.</p>
             <div className="shortcut-cards">
-              <div className="shortcut-card" onClick={() => setActiveTab("upload")}>
+              <div
+                className="shortcut-card"
+                onClick={() => setActiveTab("upload")}
+              >
                 <h3>➕ Add Product</h3>
                 <p>Create and upload new products.</p>
               </div>
-              <div className="shortcut-card" onClick={() => setActiveTab("inventory")}>
+              <div
+                className="shortcut-card"
+                onClick={() => setActiveTab("inventory")}
+              >
                 <h3>📦 View Inventory</h3>
                 <p>Check, update, or delete products.</p>
               </div>
-              <div className="shortcut-card" onClick={() => setActiveTab("returns")}>
+              <div
+                className="shortcut-card"
+                onClick={() => setActiveTab("returns")}
+              >
                 <h3>↩️ Manage Returns</h3>
                 <p>Handle product returns easily.</p>
               </div>
-              <div className="shortcut-card" onClick={() => setActiveTab("orders")}>
+              <div
+                className="shortcut-card"
+                onClick={() => setActiveTab("orders")}
+              >
                 <h3>📝 View Orders</h3>
                 <p>Track all store orders.</p>
               </div>
@@ -276,7 +304,11 @@ function StoreManager() {
 
         {/* Upload Form */}
         {activeTab === "upload" && (
-          <form onSubmit={handleSubmit} encType="multipart/form-data" className="upload-form">
+          <form
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+            className="upload-form"
+          >
             <h2>{formData._id ? "✏️ Update Product" : "➕ Add Product"}</h2>
             <div className="form-group">
               <label htmlFor="name">Product Name</label>
@@ -392,7 +424,11 @@ function StoreManager() {
                       <td>
                         {p.images?.length > 0 ? (
                           <img
-                            src={typeof p.images[0] === "string" ? p.images[0] : p.images[0].url}
+                            src={
+                              typeof p.images[0] === "string"
+                                ? p.images[0]
+                                : p.images[0].url
+                            }
                             alt={p.name}
                             className="thumbnail"
                           />
@@ -409,8 +445,18 @@ function StoreManager() {
                         {p.stock > 0 ? p.stock : "Out of Stock"}
                       </td>
                       <td>
-                        <button className="action-btn update-btn" onClick={() => handleUpdate(p)}>✏️ Update</button>
-                        <button className="action-btn delete-btn" onClick={() => handleDelete(p._id)}>🗑️ Delete</button>
+                        <button
+                          className="action-btn update-btn"
+                          onClick={() => handleUpdate(p)}
+                        >
+                          ✏️ Update
+                        </button>
+                        <button
+                          className="action-btn delete-btn"
+                          onClick={() => handleDelete(p._id)}
+                        >
+                          🗑️ Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -432,10 +478,16 @@ function StoreManager() {
         {activeTab === "orders" && (
           <div className="orders-container">
             <h2>📝 Orders</h2>
-            <button className="submit-btn add-order-btn" onClick={() => {
-              setNewOrder({ customerName: "", items: [{ productId: "", quantity: 1 }] }); // initialize first row
-              setShowOrderModal(true);
-            }}>
+            <button
+              className="submit-btn add-order-btn"
+              onClick={() => {
+                setNewOrder({
+                  customerName: "",
+                  items: [{ productId: "", quantity: 1 }],
+                }); // initialize first row
+                setShowOrderModal(true);
+              }}
+            >
               ➕ Add Order
             </button>
 
@@ -450,7 +502,12 @@ function StoreManager() {
                       <input
                         type="text"
                         value={newOrder.customerName}
-                        onChange={(e) => setNewOrder({ ...newOrder, customerName: e.target.value })}
+                        onChange={(e) =>
+                          setNewOrder({
+                            ...newOrder,
+                            customerName: e.target.value,
+                          })
+                        }
                         required
                       />
                     </div>
@@ -478,7 +535,12 @@ function StoreManager() {
                           onChange={(e) => handleOrderChange(e, index)}
                           required
                         />
-                        <button type="button" onClick={() => removeOrderItem(index)}>❌</button>
+                        <button
+                          type="button"
+                          onClick={() => removeOrderItem(index)}
+                        >
+                          ❌
+                        </button>
                       </div>
                     ))}
 
@@ -487,8 +549,14 @@ function StoreManager() {
                     </button>
 
                     <div className="modal-actions">
-                      <button type="submit" className="submit-btn">Submit Order</button>
-                      <button type="button" className="delete-btn" onClick={() => setShowOrderModal(false)}>
+                      <button type="submit" className="submit-btn">
+                        Submit Order
+                      </button>
+                      <button
+                        type="button"
+                        className="delete-btn"
+                        onClick={() => setShowOrderModal(false)}
+                      >
                         Cancel
                       </button>
                     </div>
@@ -513,10 +581,12 @@ function StoreManager() {
                 </thead>
                 <tbody>
                   {orders.map((order) => {
-                    const orderTotal = order.total || order.products.reduce((sum, p) => {
-                      const price = p.price || (p._id && p._id.priceLKR) || 0;
-                      return sum + price * p.quantity;
-                    }, 0);
+                    const orderTotal =
+                      order.total ||
+                      order.products.reduce((sum, p) => {
+                        const price = p.price || (p._id && p._id.priceLKR) || 0;
+                        return sum + price * p.quantity;
+                      }, 0);
 
                     return (
                       <tr key={order._id}>
@@ -525,7 +595,10 @@ function StoreManager() {
                         <td>
                           {order.products.map((p, i) => (
                             <div key={i}>
-                              {p.name || (p._id && p._id.name) || "Unknown Product"} x {p.quantity}
+                              {p.name ||
+                                (p._id && p._id.name) ||
+                                "Unknown Product"}{" "}
+                              x {p.quantity}
                             </div>
                           ))}
                         </td>
