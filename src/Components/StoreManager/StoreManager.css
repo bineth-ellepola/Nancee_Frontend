@@ -399,6 +399,7 @@ input[type="file"] {
 
 .orders-table tr td:nth-child(5) { /* Status column */
   font-weight: bold;
+  
 }
 
 .orders-table tr td:nth-child(5):contains("Processed") {
